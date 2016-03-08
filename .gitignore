@@ -10,3 +10,4 @@ jmeetup/bower_components
 jmeetup/jquery-mobile
 views
 routes
+firebase.json
