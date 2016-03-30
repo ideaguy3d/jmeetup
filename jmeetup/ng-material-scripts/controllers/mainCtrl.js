@@ -9,6 +9,8 @@ angular.module('jmeetup')
             $scope.users = userSer.users;
             $scope.jmessage = "jmeet up app ^_^/";
             $scope.selected = $scope.users[0];
+            $scope.seachText = '';
+            $scope.tabIndex = 0;
 
             $scope.toggleSideNav = function () {
                 $mdSidenav('left').toggle();
@@ -19,6 +21,7 @@ angular.module('jmeetup')
                 if($mdSidenav('left').isOpen()) {
                     $mdSidenav('left').close();
                 }
+                $scope.tabIndex = 0;
             };
         }
     ]);

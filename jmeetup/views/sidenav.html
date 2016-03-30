@@ -5,9 +5,23 @@
     <md-toolbar>
         <h1>Contacts</h1>
     </md-toolbar>
+    <div layout-padding>
+        <md-autocomplete md-search-text="searchText"
+                         md-items="item in users | filter:searchText"
+                         md-item-text="item.name"
+                         md-min-length="3"
+                         placeholder="filter">
+            <md-item-template>
+                <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+            </md-item-template>
+            <md-not-found>
+                 "{{searchText}}" was not found.
+            </md-not-found>
+        </md-autocomplete>
+    </div>
     <md-content>
         <md-list>
-            <md-list-item ng-repeat="user in users | orderBy:'name'">
+            <md-list-item ng-repeat="user in users | orderBy:'name' | filter:searchText">
                 <md-button ng-click="selectUser(user)" ng-class="{'selected': user === selected}">
                     <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
                     {{user.name}}
