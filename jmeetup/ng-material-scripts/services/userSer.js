@@ -10,7 +10,7 @@ angular.module('jmeetup')
             users: [
                 {
                     name: 'Julius Alvarado',
-                    avatar: 'svg-1',
+                    avatar: 'julius-1',
                     bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis est et eveniet hic illum, labore minima minusnihil pariatur qui quo, suscipit velit veniam voluptates. Aliquam id officia voluptates!',
                     notes: [
                         {title: 'code code code', date: new Date('2016-01-24')},
@@ -29,6 +29,15 @@ angular.module('jmeetup')
                 {
                     name: 'Inez Hernandez',
                     avatar: 'svg-2',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis est et eveniet hic illum, labore minima minusnihil pariatur qui quo, suscipit velit veniam voluptates. Aliquam id officia voluptates!',
+                    notes: [
+                        {title: 'hmm hmm hmm', date: new Date('2016-01-24')},
+                        {title: 'ha ha ha', date: new Date('2016-01-22')}
+                    ]
+                },
+                {
+                    name: 'Martin Hernandez',
+                    avatar: 'svg-3',
                     bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis est et eveniet hic illum, labore minima minusnihil pariatur qui quo, suscipit velit veniam voluptates. Aliquam id officia voluptates!',
                     notes: [
                         {title: 'hmm hmm hmm', date: new Date('2016-01-24')},
