@@ -1,0 +1,65 @@
+<section class="container" style="padding-top: 68px;">
+    <div class="jumbotron">
+        <h1>Just making sure this updates (: </h1>
+        <p class="lead">
+            <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+            Always a pleasure scaffolding your apps.
+        </p>
+        <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+    </div>
+
+    <label> What kind of Event Are you hosting?
+        <input list="events">
+        <datalist id="events">
+            <option value="Party"></option>
+            <option value="Meeting"></option>
+            <option value="Conference"></option>
+            <option value="Sports Game"></option>
+        </datalist>
+    </label>
+
+    <hr>
+    <hr>
+    <hr>
+
+    <h2>{{info}}</h2>
+    <p>{{err}}</p>
+    <h1>Contacts:</h1>
+
+    <form role="form" ng-submit="addToContacts()" name="db-contacts">
+        <div class="form-group">
+            <label for="name">Event</label>
+            <input type="text" ng-model="contact" class="form-control" id="name" placeholder="Name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Location</label>
+            <input type="url" ng-model="email" class="form-control" id="email" placeholder="Email">
+        </div>
+
+        <span class="input-group-btn">
+            &nbsp;<input type="submit" class="btn btn-primary btn-md" value="Add Contact">
+        </span>
+    </form>
+
+    <div class="row marketing">
+        <h4>Firebase</h4>
+        <p>
+            Firebase is a powerful API to store and sync data in realtime.
+        </p>
+
+        <h4>HTML5 Boilerplate</h4>
+        <p>
+            HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or
+            sites.
+        </p>
+
+        <h4>Angular</h4>
+        <p>
+            AngularJS is a toolset for building the framework most suited to your application development.
+        </p>
+
+        <h4>Karma</h4>
+        <p>Spectacular Test Runner for JavaScript.</p>
+    </div>
+</section>

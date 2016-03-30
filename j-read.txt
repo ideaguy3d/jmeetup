@@ -1,0 +1,6 @@
+3/28/2016 @12:15pm
+
+
+this is the project I am using to build the meetup event planer app. 
+
+it has my infinite design, and is a clone of the j contacts app I built for oportun

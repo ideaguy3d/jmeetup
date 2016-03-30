@@ -1,0 +1,74 @@
+<div class="header" ng-cloak="">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#/">Next Gen Contacts</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Home</a></li>
+                    <li class="active"><a ng-href="#/app-demo">Contacts</a></li>
+
+                    <li><a ng-href="#/chat">chat</a></li>
+                    <li>
+                        <a ng-hide-auth="" href="#/login">log in</a>
+                        <a ng-show-auth="" href="#/account">account</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>{{info}}</h2>
+    <p>{{err}}</p>
+    <h1>Contacts: </h1>
+
+    <form role="form" ng-submit="addToContacts()" name="db-contacts">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ng-model="contact" class="form-control" id="name" placeholder="Name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" ng-model="email" class="form-control" id="email" placeholder="Email">
+        </div>
+
+        <span class="input-group-btn">
+            <input type="submit" class="btn-lg" value="Add">
+        </span>
+    </form>
+
+    <br>
+
+    <select name="sort" id="sort" ng-model="contact">
+        <option value="">Sort By</option>
+        <option value="contact.name">Name</option>
+        <option value="contact.email">Email</option>
+    </select>
+
+    <div ui-sortable="" ng-model="contacts">
+        <p>Drag your contacts to re-order:</p>
+        <small ng-style="good">{{success}}</small>
+        <p class="input-group" ng-repeat="contact in contacts | orderBy:sort" style="padding: 16px 16px; cursor: move; background-color: darkgrey;">
+            <input type="text" ng-model="contact.name" class="form-control">
+            <input type="text" ng-model="contact.email" class="form-control">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-success" ng-click="updateContact($index)">Update</button>
+                <button type="submit" class="btn btn-danger" ng-click="removeContact($index)">X</button>
+            </span>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "name": "jNinja",
+  "homepage": "https://github.com/ideaguy3d/jmeetup",
+  "authors": [
+    "Julius <nbr1ninrsan2@gmail.com>"
+  ],
+  "description": "app's I am building",
+  "main": "index",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "javascript",
+    "html",
+    "css",
+    "angular",
+    "material",
+    "design",
+    "uiux"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~1.0.6"
+  }
+}

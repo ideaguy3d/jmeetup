@@ -1,0 +1,58 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: floralwhite !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: floralwhite;
+}
+
+md-toolbar h1 {
+    font-size: 2.2em;
+    font-weight: 300;
+    margin: auto;
+}
+
+md-toolbar .md-toolbar-tools h1 {
+    font-size: 1.6em;
+    font-weight: 300;
+}
+
+md-list .md-button {
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+    color: #1c1c1c !important;
+}
+
+md-list .md-button.selected {
+    color: #01f458;
+}
+
+md-sidenav md-list {
+    padding-bottom: 12px;
+}
+
+.avatar {
+    width: 128px;
+    height: 128px;
+    position: relative;
+    border: 2px solid indianred;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    vertical-align: middle;
+    zoom: 0.7;
+    transform: translateZ(0);
+    transform: scale(0.8);
+}
+
+#content {
+    padding: 6px 42px;
+}
+

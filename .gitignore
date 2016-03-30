@@ -8,6 +8,7 @@ infinite
 jmeetup/modules
 jmeetup/bower_components
 jmeetup/jquery-mobile
-views
+server-views
 routes
 firebase.json
+jmeetup/ngfirebase-scripts/angularfire/config.js

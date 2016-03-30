@@ -1,0 +1,46 @@
+<div class="header"  ng-cloak="">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#/">Next Gen Contacts</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Home</a></li>
+                    <li><a ng-href="#/app-demo">Contacts</a></li>
+
+                    <li  class="active"><a ng-href="#/chat">chat</a></li>
+                    <li>
+                        <a ng-hide-auth="" href="#/login">log in</a>
+                        <a ng-show-auth="" href="#/account">account</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Chat</h2>
+
+    <form>
+        <input placeholder="Message..." ng-model="newMessage">
+        <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
+    </form>
+
+    <ul id="messages" ng-show="messages.length">
+        <li ng-repeat="message in messages | reverse">{{message.text}}</li>
+    </ul>
+
+    <p class="alert alert-danger" ng-show="err">{{err}}</p>
+</div>
