@@ -4,8 +4,8 @@
  */
 
 angular.module('jmeetup')
-    .controller('mainCtrl', ['userSer', '$scope', '$mdSidenav',
-        function (userSer, $scope, $mdSidenav) {
+    .controller('mainCtrl', ['userSer', '$scope', '$mdSidenav', '$mdToast', '$mdDialog', '$mdMedia',
+        function (userSer, $scope, $mdSidenav, $mdToast, $mdDialog, $mdMedia) {
             $scope.users = userSer.users;
             $scope.jmessage = "jmeet up app ^_^/";
             $scope.selected = $scope.users[0];
@@ -23,5 +23,45 @@ angular.module('jmeetup')
                 }
                 $scope.tabIndex = 0;
             };
-        }
+
+            $scope.removeNote = function (note) {
+                var foundIndex = $scope.selected.notes.indexOf(note);
+                this.selected.notes.splice(foundIndex, 1);
+                openToast('Note was removed');
+            };
+
+            function openToast (message) {
+                $mdToast.show($mdToast.simple().textContent(message)
+                    .position('top right')
+                    .hideDelay(3000));
+            }
+
+            $scope.clearNotes = function (evt) {
+                var confirm = $mdDialog.confirm().title('Now, do you really want to Delete All notes?')
+                    .textContent('this action cant be undone')
+                    .targetEvent(evt)
+                    .ok('Yes')
+                    .cancel('No');
+                $mdDialog.show(confirm).then(function () {
+                    $scope.selected.notes = [];
+                });
+            };
+
+            $scope.addUser = function (evt) {
+                var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+
+                $mdDialog.show({
+                    templateUrl: 'views/newUserDialog.html',
+                    parent: angular.element(document.body),
+                    targetEvent: evt,
+                    controller: "addUserDialogCtrl"
+
+                }).then(function (user) {
+                    openToast("The User has been added ^_^");
+                }, function () {
+                    console.log("Dialog has been been canceled");
+                });
+            };
+
+        }//end of ctrl function
     ]);

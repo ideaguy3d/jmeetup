@@ -6,7 +6,10 @@ angular.module('jmeetup', ['ngMaterial', 'ngMdIcons'])
         function ($mdIconProvider, $mdThemingProvider) {
             $mdIconProvider
                 .defaultIconSet('img/svg/avatars.svg', 128)
-                .icon('menu', 'img/svg/menu.svg', 24);
+                .icon('menu', 'img/svg/menu.svg', 24)
+                .icon('twitter', 'img/svg/twitter.svg', 30)
+                .icon('mail', 'img/svg/twitter.svg');
+
             $mdThemingProvider.theme('default')
                 .primaryPalette('green')
                 .accentPalette('red');

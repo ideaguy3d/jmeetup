@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="jmeetup">
+<html lang="en">
 <head>
     <title>Julius ngMaterial Design</title>
 
@@ -22,29 +22,41 @@
 
 
 <!-- vm = view model -->
-<body layout="row" ng-cloak ng-controller="mainCtrl" style="color: lightgrey">
+<body ng-controller="mainCtrl" ng-app="jmeetup">
+<div layout="row" ng-cloak>
+    <div ng-include="'views/sidenav.html'" layout="vertical"></div>
 
-<div ng-include="'views/sidenav.html'" layout="vertical"></div>
+    <div layout="column" flex>
+        <div ng-include="'views/toolbar-header.html'"></div>
+        <md-content flex id="content">
+            <div ng-include="'views/main-content.html'"></div>
 
-<div layout="column" flex>
-    <div ng-include="'views/toolbar-header.html'"></div>
-    <md-content flex id="content">
-        <div ng-include="'views/main-content.html'"></div>
+            <md-tabs md-selected="tabIndex"
+                     md-dynamic-height
+                     md-stretch-tabs="always">
+                <md-tab label="Bio">
+                    <div ng-include="'views/tab-bio.html'"></div>
+                </md-tab>
+                <md-tab label="Notes">
+                    <div ng-include="'views/tab-notes.html'"></div>
+                </md-tab>
+                <md-tab label="App's">
+                    <div ng-include="'views/tab-apps.html'"></div>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+</div>
 
-        <md-tabs md-selected="tabIndex"
-                 md-dynamic-height
-                 md-stretch-tabs="always">
-            <md-tab label="Bio">
-                <div ng-include="'views/tab-bio.html'"></div>
-            </md-tab>
-            <md-tab label="Notes">
-                <div ng-include="'views/tab-notes.html'"></div>
-            </md-tab>
-            <md-tab label="App's">
-                <div ng-include="'views/tab-apps.html'"></div>
-            </md-tab>
-        </md-tabs>
-    </md-content>
+
+<div class="jfooter">
+    <div class="jcenter">
+        <h1>
+            Built by <a href="https://juliusalvarado.info" target="_blank"><span class="label label-default">Julius A</span></a>
+            with <img src="https://angularjs.org/img/AngularJS-large.png" alt="angular" width="178">
+            and <img src="images/firebase.png" alt="firebase">
+        </h1>
+    </div>
 </div>
 
 
@@ -58,6 +70,7 @@
 <!-- Custom JavaScript -->
 <script src="ng-material-scripts/app.js"></script>
 <script src="ng-material-scripts/services/userSer.js"></script>
+<script src="ng-material-scripts/controllers/addUserDialogController.js"></script>
 <script src="ng-material-scripts/controllers/mainCtrl.js"></script>
 
 </body>

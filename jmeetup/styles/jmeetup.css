@@ -7,8 +7,43 @@ html, body {
     color: floralwhite !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+body > div.column > md-content {
+    color: #5d5d5d;
+}
+
+md-toolbar h1 {
     color: floralwhite;
+}
+
+.jcenter {
+    text-align: center;
+}
+
+.jfooter {
+    display: block;
+    background-color: #434343;
+    vertical-align: middle;
+}
+
+.jfooter h1{
+    vertical-align: middle;
+}
+
+.jfooter a {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.jfooter:before {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+md-toolbar .jblack{
+    color: #5d5d5d !important;
 }
 
 md-toolbar h1 {
@@ -53,6 +88,15 @@ md-sidenav md-list {
     vertical-align: middle;
     zoom: 0.7;
     transform: translateZ(0) scale(0.8);
+}
+
+.scrollable-nav-content {
+    position: absolute;
+    top: 136px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: auto;
 }
 
 #content {

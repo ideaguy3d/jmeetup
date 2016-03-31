@@ -6,5 +6,28 @@
         <h1>
             <span>Toolbar with Icon Buttons</span>
         </h1>
+        <md-fab-speed-dial
+                md-direction="down"
+                class="md-fling md-fab-top-right">
+            <md-fab-trigger>
+                <md-button class="md-fab">
+                    <md-icon md-svg-icon="menu"></md-icon>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+                <md-button class="md-fab md-raised md-mini">
+                    <ng-md-icon icon="twitter" class="jblack"></ng-md-icon>
+                    <md-tooltip md-direction="left">Tweet this user</md-tooltip>
+                </md-button>
+                <md-button class="md-fab md-raised md-mini">
+                    <ng-md-icon icon="mail" class="jblack"></ng-md-icon>
+                    <md-tooltip md-direction="left">Email this user</md-tooltip>
+                </md-button>
+                <md-button class="md-fab md-raised md-mini"
+                    ng-click="clearNotes($event)">
+                    <i class="fa fa-close fa-2x"></i>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
     </div>
 </md-toolbar>
