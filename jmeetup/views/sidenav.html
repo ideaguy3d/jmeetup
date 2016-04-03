@@ -3,14 +3,14 @@
         md-component-id="left"
         md-is-locked-open="$mdMedia('gt-lg')">
     <md-toolbar>
-        <h1>Contacts</h1>
+        <h1>Work Out's</h1>
     </md-toolbar>
     <div layout-padding>
         <md-autocomplete md-search-text="searchText"
                          md-items="item in users | filter:searchText"
                          md-item-text="item.name"
                          md-min-length="3"
-                         placeholder="filter">
+                         placeholder="search...">
             <md-item-template>
                 <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
             </md-item-template>

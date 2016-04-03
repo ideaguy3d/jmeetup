@@ -11,6 +11,7 @@ angular.module('jmeetup')
             $scope.selected = $scope.users[0];
             $scope.seachText = '';
             $scope.tabIndex = 0;
+            var x = [0];
 
             $scope.toggleSideNav = function () {
                 $mdSidenav('left').toggle();
@@ -18,7 +19,7 @@ angular.module('jmeetup')
 
             $scope.selectUser = function (user) {
                 $scope.selected = user;
-                if($mdSidenav('left').isOpen()) {
+                if ($mdSidenav('left').isOpen()) {
                     $mdSidenav('left').close();
                 }
                 $scope.tabIndex = 0;
@@ -30,7 +31,7 @@ angular.module('jmeetup')
                 openToast('Note was removed');
             };
 
-            function openToast (message) {
+            function openToast(message) {
                 $mdToast.show($mdToast.simple().textContent(message)
                     .position('top right')
                     .hideDelay(3000));
@@ -40,10 +41,11 @@ angular.module('jmeetup')
                 var confirm = $mdDialog.confirm().title('Now, do you really want to Delete All notes?')
                     .textContent('this action cant be undone')
                     .targetEvent(evt)
-                    .ok('Yes')
-                    .cancel('No');
+                    .ok('.Ok')
+                    .cancel('.Cancel');
                 $mdDialog.show(confirm).then(function () {
                     $scope.selected.notes = [];
+                    openToast('Notes have been clear');
                 });
             };
 
@@ -51,16 +53,19 @@ angular.module('jmeetup')
                 var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
 
                 $mdDialog.show({
-                    templateUrl: 'views/newUserDialog.html',
-                    parent: angular.element(document.body),
-                    targetEvent: evt,
-                    controller: "addUserDialogCtrl"
-
-                }).then(function (user) {
-                    openToast("The User has been added ^_^");
-                }, function () {
-                    console.log("Dialog has been been canceled");
-                });
+                        templateUrl: 'views/newUserDialog.html',
+                        parent: angular.element(document.body),
+                        targetEvent: evt,
+                        controller: "addUserDialogCtrl",
+                        //controllerAs: 'userDialogCtrl',
+                        clickOutsideToClose: true,
+                        fullscreen: useFullScreen
+                    })
+                    .then(function (user) {
+                        openToast("The User has been added ^_^");
+                    }, function () {
+                        openToast("Dialog has been been canceled");
+                    });
             };
 
         }//end of ctrl function

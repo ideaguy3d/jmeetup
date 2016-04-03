@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/font-awesome-4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
@@ -29,8 +30,8 @@
     <div layout="column" flex>
         <div ng-include="'views/toolbar-header.html'"></div>
         <md-content flex id="content">
+            <!--<article ng-include="'views/freecodecamp-projects1.html'"></article>-->
             <div ng-include="'views/main-content.html'"></div>
-
             <md-tabs md-selected="tabIndex"
                      md-dynamic-height
                      md-stretch-tabs="always">
@@ -52,7 +53,10 @@
 <div class="jfooter">
     <div class="jcenter">
         <h1>
-            Built by <a href="https://juliusalvarado.info" target="_blank"><span class="label label-default">Julius A</span></a>
+            Built by <a href="https://juliusalvarado.info" target="_blank">
+            <span class="label label-default">
+                <i class="fa fa-code"></i> j.Alvarado() <i class="fa fa-code"></i>
+            </span></a>
             with <img src="https://angularjs.org/img/AngularJS-large.png" alt="angular" width="178">
             and <img src="images/firebase.png" alt="firebase">
         </h1>
@@ -70,7 +74,7 @@
 <!-- Custom JavaScript -->
 <script src="ng-material-scripts/app.js"></script>
 <script src="ng-material-scripts/services/userSer.js"></script>
-<script src="ng-material-scripts/controllers/addUserDialogController.js"></script>
+<script src="ng-material-scripts/controllers/addUserDialogCtrl.js"></script>
 <script src="ng-material-scripts/controllers/mainCtrl.js"></script>
 
 </body>
