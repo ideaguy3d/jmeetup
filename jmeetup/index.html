@@ -23,11 +23,12 @@
 
 
 <!-- vm = view model -->
-<body ng-controller="mainCtrl" ng-app="jmeetup">
-<div layout="row" ng-cloak>
+<body>
+<div id="ng-app" ng-controller="mainCtrl"  layout="row" ng-cloak>
+    <!-- side nav -->
     <div ng-include="'views/sidenav.html'" layout="vertical"></div>
-
-    <div layout="column" flex>
+    <!-- primary web app content area -->
+    <div layout="column" flex id="main-wrapper">
         <div ng-include="'views/toolbar-header.html'"></div>
         <md-content flex id="content">
             <!--<article ng-include="'views/freecodecamp-projects1.html'"></article>-->
@@ -49,7 +50,6 @@
     </div>
 </div>
 
-
 <div class="jfooter">
     <div class="jcenter">
         <h1>
@@ -58,24 +58,42 @@
                 <i class="fa fa-code"></i> j.Alvarado() <i class="fa fa-code"></i>
             </span></a>
             with <img src="https://angularjs.org/img/AngularJS-large.png" alt="angular" width="178">
-            and <img src="images/firebase.png" alt="firebase">
         </h1>
+    </div>
+    <div id="j-gif-anim" class="jcenter">
+        <img src="img/ajax-loader1.gif" alt="julius-gif">
+        <img src="img/julius-anim-gif.gif" alt="julius-gif">
+        <img src="img/ajax-loader1.gif" alt="julius-gif">
     </div>
 </div>
 
 
 <!-- JavaScript Libraries -->
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
-<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
 <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
 
 <!-- Custom JavaScript -->
 <script src="ng-material-scripts/app.js"></script>
 <script src="ng-material-scripts/services/userSer.js"></script>
 <script src="ng-material-scripts/controllers/addUserDialogCtrl.js"></script>
+<script src="ng-material-scripts/controllers/contactPanelCtrl.js"></script>
 <script src="ng-material-scripts/controllers/mainCtrl.js"></script>
+
+<script type="text/javascript" async>
+    // let's wait for a bit before letting angulars'
+    //material design freeze up the page to watch an animation
+    setTimeout(function () {
+        angular.bootstrap('#ng-app', ['jmeetup']);
+    }, 800);
+    setTimeout(function () {
+        jQuery('#j-gif-anim').css("display", "none");
+    }, 3000);
+</script>
 
 </body>
 

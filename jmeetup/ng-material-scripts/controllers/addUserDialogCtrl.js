@@ -4,15 +4,25 @@
 "use strict";
 
 angular.module('jmeetup')
-    .controller('addUserDialogCtrl', ['$scope', '$mdDialog', 'userSer', function ($scope, $mdDialog, userSer) {
-        // aud = add user dialog
-        $scope.save_addUserDialog = function () {
-            $mdDialog.hide();
-            userSer.addUser("... form will fill this soon");
-        };
+    // this controls the newUserDialog.html template
+    .controller('addUserDialogCtrl', ['$scope', '$mdDialog', 'userSer',
+        function ($scope, $mdDialog, userSer) {
+            $scope.addUserDialog_user = {};
+            var user = $scope.addUserDialog_user;
 
-        $scope.cancel_addUserDialog = function () {
-            $mdDialog.cancel();
-        };
-    }]);
+            $scope.save_addUserDialog = function () {
+                $mdDialog.hide();
+                //userSer.addUser("... form will fill");
+                console.log("saved user = "+$scope.addUserDialog_user.firstName+" "+$scope.addUserDialog_user.lastName);
+                console.log(user.bio+", user obj = "+user);
+                userSer.addCreatedUser(user);
+            };
+
+            $scope.cancel_addUserDialog = function () {
+                $mdDialog.cancel();
+            };
+
+            $scope.avatars = ['svg-1', 'julius-1', 'svg-2'];
+        }
+    ]);
 

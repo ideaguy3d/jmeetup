@@ -1,0 +1,25 @@
+<md-content layout-padding>
+    <form name="noteForm" ng-submit="addNote()" ng-init="setFormScope(this)">
+        <div layout-gt-xs="row">
+            <!-- title input -->
+            <md-input-container class="md-block" flex-gt-small>
+                <label>Title</label>
+                <input type="text" name="title" ng-model="newNote.title" required>
+                <div ng-messages="noteForm.title.$error">
+                    <div ng-message="required">Hey! The Title is required man!</div>
+                </div>
+            </md-input-container>
+            <!-- date picker -->
+            <md-datepicker ng-model="newNote.date"
+                           md-placeholder="Enter Date"
+                           class="date-row">
+            </md-datepicker>
+            <!-- submit button -->
+            <div class="md-actions">
+                <md-button class="md-primary md-raised date-row" type="submit"
+                           ng-disabled="noteForm.$invalid">Add
+                </md-button>
+            </div>
+        </div>
+    </form>
+</md-content>

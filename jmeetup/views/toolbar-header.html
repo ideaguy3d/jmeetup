@@ -15,18 +15,19 @@
                 </md-button>
             </md-fab-trigger>
             <md-fab-actions>
-                <md-button class="md-fab md-raised md-mini">
-                    <ng-md-icon icon="twitter" class="jblack"></ng-md-icon>
-                    <md-tooltip md-direction="left">Tweet this user</md-tooltip>
+                <md-button class="md-fab md-raised md-mini"
+                           ng-click="showContactOptions($event)">
+                    <ng-md-icon icon="face" class="jblack"></ng-md-icon>
+                    <md-tooltip md-direction="left">Contact this user</md-tooltip>
                 </md-button>
                 <md-button class="md-fab md-raised md-mini">
                     <ng-md-icon icon="mail" class="jblack"></ng-md-icon>
                     <md-tooltip md-direction="left">Email this user</md-tooltip>
                 </md-button>
                 <md-button class="md-fab md-raised md-mini"
-                    ng-click="clearNotes($event)">
+                           ng-click="clearNotes($event)">
                     <ng-md-icon icon="clear_all"></ng-md-icon>
-                    <md-tooltip md-direction="left">Clear All</md-tooltip>
+                    <md-tooltip md-direction="left">Clear All the notes</md-tooltip>
                 </md-button>
             </md-fab-actions>
         </md-fab-speed-dial>

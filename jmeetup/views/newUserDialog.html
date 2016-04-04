@@ -1,15 +1,51 @@
 <md-dialog>
     <form name="userForm" ng-submit="save_addUserDialog()">
         <md-dialog-content>
-            Content
+            <div layout="column" layout-padding>
+                <div layout-gt-sm="row">
+                    <!-- avatar selection -->
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Avatar *</label>
+                        <md-select ng-model="addUserDialog_user.avatar" name="avatar" required>
+                            <md-option ng-repeat="avatar in avatars" ng-value="avatar">
+                                <md-icon md-svg-icon="{{avatar}}"></md-icon>
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="userForm.avatar.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                    <!-- first name input -->
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>First Name *</label>
+                        <input type="text" ng-model="addUserDialog_user.firstName" name="firstName"
+                               required>
+                        <div ng-messages="userForm.firstName.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                    <!-- last name input -->
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Last Name *</label>
+                        <input type="text" ng-model="addUserDialog_user.lastName" name="lastName"
+                               required>
+                        <div ng-messages="userForm.lastName.$error">
+                            <div ng-message="required">This is required</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <!-- biography input -->
+                <md-input-container class="md-block" flex>
+                    <label for="bio">Biography</label>
+                    <textarea ng-model="addUserDialog_user.bio" name="bio" id="bio" rows="5"></textarea>
+                </md-input-container>
+            </div>
         </md-dialog-content>
 
         <md-dialog-actions layout="row">
-            <md-button ng-click="cancel_addUserDialog()">
-                Cancel
-            </md-button>
-            <md-button type="submit" class="md-primary md-raised">
-                Save
+            <md-button ng-click="cancel_addUserDialog()">Cancel</md-button>
+            <md-button type="submit" class="md-primary md-raised"
+                       ng-disabled="userForm.$invalid">Save
             </md-button>
         </md-dialog-actions>
     </form>

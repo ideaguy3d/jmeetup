@@ -19,10 +19,19 @@ md-toolbar h1 {
     text-align: center;
 }
 
+.jcenter h1 {
+    padding-bottom: 8px;
+}
+
 .jfooter {
     display: block;
-    background-color: #434343;
+    background-color: #2E7D32;
     vertical-align: middle;
+    position: absolute;
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: auto;
 }
 
 .jfooter h1{
@@ -101,5 +110,19 @@ md-sidenav md-list {
 
 #content {
     padding: 6px 42px;
+}
+
+span.name {
+    font-weight: bold;
+    font-size: 1.1em;
+    padding-left: 6px;
+}
+
+md-dialog {
+    color: #434343;
+}
+
+.date-row {
+    margin: 16px 0px;
 }
 

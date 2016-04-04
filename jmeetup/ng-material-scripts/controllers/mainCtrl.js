@@ -4,14 +4,35 @@
  */
 
 angular.module('jmeetup')
-    .controller('mainCtrl', ['userSer', '$scope', '$mdSidenav', '$mdToast', '$mdDialog', '$mdMedia',
-        function (userSer, $scope, $mdSidenav, $mdToast, $mdDialog, $mdMedia) {
+    .controller('mainCtrl', [
+        'userSer', '$scope', '$mdSidenav', '$mdToast', '$mdDialog', '$mdMedia', '$mdBottomSheet',
+        function (userSer, $scope, $mdSidenav, $mdToast, $mdDialog, $mdMedia, $mdBottomSheet) {
             $scope.users = userSer.users;
             $scope.jmessage = "jmeet up app ^_^/";
             $scope.selected = $scope.users[0];
+            userSer.selectedUser = $scope.selected;
             $scope.seachText = '';
             $scope.tabIndex = 0;
-            var x = [0];
+            $scope.newNote = {};
+            var openToast = function (message) {
+                $mdToast.show($mdToast.simple().textContent(message)
+                    .position('top right')
+                    .hideDelay(3000));
+            };
+
+            $scope.setFormScope = function (scope) {
+                $scope.formScope = scope;
+            };
+
+            $scope.addNote = function () {
+                $scope.selected.notes.push($scope.newNote);
+                // let's reset the form
+                $scope.formScope.noteForm.$setUntouched();
+                $scope.formScope.noteForm.$setPristine();
+
+                $scope.newNote = {};
+                openToast("zNote was Added :)");
+            };
 
             $scope.toggleSideNav = function () {
                 $mdSidenav('left').toggle();
@@ -19,10 +40,24 @@ angular.module('jmeetup')
 
             $scope.selectUser = function (user) {
                 $scope.selected = user;
+                userSer.selectedUser = $scope.selected;
+
                 if ($mdSidenav('left').isOpen()) {
                     $mdSidenav('left').close();
                 }
                 $scope.tabIndex = 0;
+            };
+
+            $scope.showContactOptions = function ($evt) {
+                $mdBottomSheet.show({
+                        parent: angular.element(document.getElementById('main-wrapper')),
+                        templateUrl: 'views/contactSheet.html',
+                        controller: 'contactPanelCtrl'
+                    })
+                    .then(function (clickedItem) {
+                        //first check that clickedItam is truthy then console.log("");
+                        clickedItem && console.log(clickedItem.name + ' clicked!');
+                    })
             };
 
             $scope.removeNote = function (note) {
@@ -30,12 +65,6 @@ angular.module('jmeetup')
                 this.selected.notes.splice(foundIndex, 1);
                 openToast('Note was removed');
             };
-
-            function openToast(message) {
-                $mdToast.show($mdToast.simple().textContent(message)
-                    .position('top right')
-                    .hideDelay(3000));
-            }
 
             $scope.clearNotes = function (evt) {
                 var confirm = $mdDialog.confirm().title('Now, do you really want to Delete All notes?')
@@ -63,8 +92,7 @@ angular.module('jmeetup')
                     })
                     .then(function (user) {
                         openToast("The User has been added ^_^");
-                    }, function () {
-                        openToast("Dialog has been been canceled");
+                        userSer.selectedUser = user;
                     });
             };
 

@@ -3,10 +3,17 @@
 angular.module('jmeetup')
     .factory('userSer', [function () {
 
-        function MyTempUserModel(name, newNote) {
+        function CreateUserModel(firstname, lastname, avatar, bio) {
+            this.firstname = firstname || 'no first name :(';
+            this.lastname = lastname || 'no last name :(';
+            this.avatar = avatar || 'julius-1';
+            this.bio = bio || 'no bio :(';
+        }
+
+        function MyTempUserModel(name, avatar, bio, newNote) {
             this.name = name;
-            this.avatar = 'julius-1';
-            this.bio = 'Julius Alvarado is Lorem ipsum dolor sit amet, consectetur ' +
+            this.avatar = avatar;
+            this.bio = this.name + bio +' is Lorem ipsum dolor sit amet, consectetur ' +
                 'adipisicing elit. Ad corporis est et eveniet hic illum, labore ' +
                 'minima minusnihil pariatur qui quo, suscipit velit veniam voluptates. Aliquam id officia voluptates!';
             this.notes = [
@@ -16,7 +23,27 @@ angular.module('jmeetup')
             this.notes[2] = newNote;
         }
 
-        var users = [
+        //----------------- variable's -----------------
+            // method will find an obj in an array of obj's given obj.name
+        var findObNarray = function (nameprop) {
+                for (var i = 0, len = users.length; i < len; i++) {
+                    if (users[i].name === nameprop) return users[i];
+                }
+                return null;
+            },
+
+            // method to create a new CreateUserModel obj
+            fromCreateUser = function (createdUser) {
+                return new MyTempUserModel(
+                    createdUser.firstName + ' ' + createdUser.lastName,
+                    createdUser.avatar,
+                    createdUser.bio,
+                    { title: ' auto generated 3rd note ', date: new Date('2016-04-03') }
+                );
+            },
+
+            // mock user data
+            users = [
                 {
                     name: 'Julius Alvarado',
                     avatar: 'julius-1',
@@ -55,6 +82,10 @@ angular.module('jmeetup')
                 }
             ],
             userCount = 0;
+
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        // return this services' api obj
         return {
             loadAllUsers: function () {
                 //implelment a $q to simulate a server response
@@ -62,9 +93,17 @@ angular.module('jmeetup')
             selectedUser: null,
             users: users,
             addUser: function (foo) {
-                var name =  "User" + ++userCount + foo;
-                users.push(new MyTempUserModel(name, {title: 'note = '+userCount+foo, date: new Date('2016-03-30')}));
-                console.log("hopefully a new user was added");
+                var name = "User" + ++userCount + foo;
+                var notes = {
+                    title: 'note = ' + userCount + foo,
+                    date: new Date('2016-04-03')
+                };
+                var userType = new MyTempUserModel(name, 'julius_1', notes);
+                users.push(userType);
+                //console.log(findObNarray(name).name+"User "+users[0]+" was added.");
+            },
+            addCreatedUser: function (createdUser) {
+                users.push(fromCreateUser(createdUser));
             }
         }
     }]);
